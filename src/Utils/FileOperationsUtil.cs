@@ -26,7 +26,7 @@ public class FileOperationsUtil : IFileOperationsUtil
     {
         string gitDir = _gitUtil.CloneToTempDirectory("https://github.com/soenneker/soenneker.libraries.ffmpeg");
 
-        string targetExePath = Path.Combine(gitDir, "Resources","ffmpeg.exe");
+        string targetExePath = Path.Combine(gitDir, "src", "Resources","ffmpeg.exe");
 
         _fileUtil.DeleteIfExists(targetExePath);
 
