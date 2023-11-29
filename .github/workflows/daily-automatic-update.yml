@@ -1,0 +1,33 @@
+name: daily-automatic-update
+on:
+  schedule:
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+
+env:
+  Username: ${{ secrets.USERNAME }}
+  Token: ${{ secrets.TOKEN }}
+  Name: ${{ secrets.NAME }}
+  Email: ${{ secrets.EMAIL }}
+
+jobs:
+
+  daily-automatic-update:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8.0
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run
+        run: dotnet run --project src/Soenneker.Runners.Ffmpeg.csproj --no-restore --verbosity normal --framework net8.0

@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <Platforms>AnyCPU</Platforms>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>Automatically updates the Soenneker.Libraries.FFmpeg package</Description>
+        <Version Condition="'$(BUILD_VERSION)' == ''">2.1.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
+        <AssemblyName>Soenneker.Runners.FFmpeg</AssemblyName>
+        <PackageId>Soenneker.Runners.FFmpeg</PackageId>
+        <PackageTags>runners ffmpeg ffmpegrunner c# .net csharp dotnet</PackageTags>
+        <Copyright>Copyright © 2023 Jake Soenneker</Copyright>
+        <Authors>Jake Soenneker</Authors>
+        <Company>https://soenneker.com</Company>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <IsPackable>true</IsPackable>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/soenneker/soenneker.runners.ffmpeg</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/soenneker/soenneker.runners.ffmpeg</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <LangVersion>latest</LangVersion>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>icon.png</PackageIcon>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+        <None Include="..\icon.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    
+    <ItemGroup>
+        <PackageReference Include="SharpCompress" Version="0.34.2" />
+        <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="2.1.59" />
+
+        <PackageReference Include="Soenneker.Extensions.Object" Version="2.1.91" />
+
+        <PackageReference Include="Soenneker.Git.Util" Version="2.1.42" />
+
+        <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.53" />
+
+        <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="2.1.46" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+        <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="2.1.42" />
+        <PackageReference Include="Soenneker.Extensions.HttpResponseMessage" Version="2.1.62" />
+        <PackageReference Include="Soenneker.Utils.File" Version="2.1.61" />
+    </ItemGroup>
+</Project>
