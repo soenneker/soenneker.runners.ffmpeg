@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <OutputType>Exe</OutputType>
         <TargetFrameworks>net8.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <Platforms>AnyCPU</Platforms>
