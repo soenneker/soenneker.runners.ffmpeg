@@ -46,6 +46,8 @@ public class FileOperationsUtil : IFileOperationsUtil
             _gitUtil.Commit(gitDir, "Automated update", name, email);
 
             await _gitUtil.Push(gitDir, username, token);
+
+            await Task.Delay(2000);
         }
         else
         {
