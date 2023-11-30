@@ -26,6 +26,10 @@ public class FileOperationsUtil : IFileOperationsUtil
     {
         string gitDir = _gitUtil.CloneToTempDirectory("https://github.com/soenneker/soenneker.libraries.ffmpeg");
 
+        await _gitUtil.RunCommand("lfs install", gitDir);
+
+        await _gitUtil.RunCommand("lfs pull", gitDir);
+
         string targetExePath = Path.Combine(gitDir, "src", "Resources","ffmpeg.exe");
 
         _fileUtil.DeleteIfExists(targetExePath);
@@ -43,11 +47,11 @@ public class FileOperationsUtil : IFileOperationsUtil
             string username = EnvironmentUtil.GetVariableStrict("Username");
             string token = EnvironmentUtil.GetVariableStrict("Token");
 
-            _gitUtil.Commit(gitDir, "Automated update", name, email);
+            await _gitUtil.RunCommand("commit -m \"Automated update\"", gitDir);
+
+            await _gitUtil.RunCommand("lfs push origin main", gitDir);
 
             await _gitUtil.Push(gitDir, username, token);
-
-            await Task.Delay(2000);
         }
         else
         {

@@ -22,7 +22,7 @@ public class ExtractionUtil : IExtractionUtil
         _directoryUtil = directoryUtil;
     }
 
-    public async ValueTask<string> Extract7Zip(string fileNamePath)
+    public async ValueTask<string> Extract7Zip(string fileNamePath, string? specificFileFilter = null)
     {
         string tempDir = _directoryUtil.CreateTempDirectory();
 
@@ -44,6 +44,14 @@ public class ExtractionUtil : IExtractionUtil
                         }
                         else
                         {
+                            if (specificFileFilter != null)
+                            {
+                                if (!entry.Key.Contains(specificFileFilter))
+                                {
+                                    continue;
+                                }
+                            }
+
                             _logger.LogInformation("Extracting {message} ({size})...", entry.Key, entry.Size);
 
                             entry.WriteToFile(Path.Combine(tempDir, entry.Key));

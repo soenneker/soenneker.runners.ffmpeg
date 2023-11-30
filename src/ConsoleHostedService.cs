@@ -42,7 +42,7 @@ public class ConsoleHostedService : IHostedService
                 {
                     string fileName = await _downloadUtil.Download();
 
-                    string extractionPath = await _extractionUtil.Extract7Zip(fileName);
+                    string extractionPath = await _extractionUtil.Extract7Zip(fileName, "ffmpeg.exe");
 
                     await _fileOperationsUtil.SaveToGitRepo(Path.Combine(extractionPath, "bin", "ffmpeg.exe"));
 
