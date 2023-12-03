@@ -3,12 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Soenneker.Git.Util.Abstract;
 using Soenneker.Runners.FFmpeg.Utils.Abstract;
-using Soenneker.Utils.Directory;
 using Soenneker.Utils.Directory.Abstract;
 using Soenneker.Utils.Dotnet.Abstract;
 using Soenneker.Utils.Dotnet.NuGet.Abstract;
 using Soenneker.Utils.Environment;
-using Soenneker.Utils.File;
 using Soenneker.Utils.File.Abstract;
 using Soenneker.Utils.SHA3;
 
@@ -78,7 +76,9 @@ public class FileOperationsUtil : IFileOperationsUtil
 
         string apiKey = EnvironmentUtil.GetVariableStrict("NUGET_API_KEY");
 
-        await _dotnetNuGetUtil.Push(gitDirectory, apiKey);
+        string nuGetPackagePath = Path.Combine(gitDirectory, $"Soenneker.Libraries.FFmpeg.{version}.nupkg");
+
+        await _dotnetNuGetUtil.Push(nuGetPackagePath, apiKey);
     }
 
     private async ValueTask<bool> CheckForHashDifferences(string gitDirectory, string targetExePath)
