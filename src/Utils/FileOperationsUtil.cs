@@ -110,6 +110,8 @@ public class FileOperationsUtil : IFileOperationsUtil
 
         await _fileUtil.WriteFile(targetHashFile, _newHash!);
 
+        _fileUtil.DeleteIfExists(Path.Combine(gitDirectory, "src", "Resources", "ffmpeg.exe"));
+
         _gitUtil.AddIfNotExists(gitDirectory, targetHashFile);
 
         if (_gitUtil.IsRepositoryDirty(gitDirectory))
@@ -121,9 +123,7 @@ public class FileOperationsUtil : IFileOperationsUtil
             string username = EnvironmentUtil.GetVariableStrict("Username");
             string token = EnvironmentUtil.GetVariableStrict("Token");
 
-           // _gitUtil.Commit(gitDirectory, "Updates hash for new FFmpeg version", name, email);
-
-            await _gitUtil.RunCommand("commit -m \"Updates hash for new FFmpeg version\"", gitDirectory);
+            _gitUtil.Commit(gitDirectory, "Updates hash for new FFmpeg version", name, email);
 
             await _gitUtil.Push(gitDirectory, username, token);
         }
