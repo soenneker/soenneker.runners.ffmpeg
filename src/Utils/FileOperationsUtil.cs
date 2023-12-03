@@ -76,7 +76,7 @@ public class FileOperationsUtil : IFileOperationsUtil
 
         await _dotnetUtil.Pack(projFilePath, version, true, "Release", false, false, gitDirectory);
 
-        string apiKey = EnvironmentUtil.GetVariableStrict("NUGET_API_KEY");
+        string apiKey = EnvironmentUtil.GetVariableStrict("NUGET_KEY");
 
         await _dotnetNuGetUtil.Push(gitDirectory, apiKey);
     }
