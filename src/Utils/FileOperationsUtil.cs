@@ -121,7 +121,9 @@ public class FileOperationsUtil : IFileOperationsUtil
             string username = EnvironmentUtil.GetVariableStrict("Username");
             string token = EnvironmentUtil.GetVariableStrict("Token");
 
-            _gitUtil.Commit(gitDirectory, "Updates hash for new FFmpeg version", name, email);
+           // _gitUtil.Commit(gitDirectory, "Updates hash for new FFmpeg version", name, email);
+
+            await _gitUtil.RunCommand("commit -m \"Updates hash for new FFmpeg version\"", gitDirectory);
 
             await _gitUtil.Push(gitDirectory, username, token);
         }
