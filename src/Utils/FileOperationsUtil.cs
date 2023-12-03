@@ -40,7 +40,7 @@ public class FileOperationsUtil : IFileOperationsUtil
 
         string targetExePath = Path.Combine(gitDirectory, "src", "Resources", "ffmpeg.exe");
 
-        bool needToUpdate = await CheckForHashDifferences(gitDirectory, targetExePath);
+        bool needToUpdate = await CheckForHashDifferences(gitDirectory, filePath);
 
         if (!needToUpdate)
             return;
@@ -81,7 +81,7 @@ public class FileOperationsUtil : IFileOperationsUtil
         await _dotnetNuGetUtil.Push(nuGetPackagePath, apiKey);
     }
 
-    private async ValueTask<bool> CheckForHashDifferences(string gitDirectory, string targetExePath)
+    private async ValueTask<bool> CheckForHashDifferences(string gitDirectory, string filePath)
     {
         string? oldHash = await _fileUtil.TryReadFile(Path.Combine(gitDirectory, "hash.txt"));
 
@@ -91,7 +91,7 @@ public class FileOperationsUtil : IFileOperationsUtil
             return true;
         }
 
-        _newHash = await Sha3Util.HashFile(targetExePath);
+        _newHash = await Sha3Util.HashFile(filePath);
 
         if (oldHash == _newHash)
         {
