@@ -4,5 +4,5 @@ namespace Soenneker.Runners.FFmpeg.Utils.Abstract;
 
 public interface IFileOperationsUtil
 {
-    ValueTask SaveToGitRepo(string filePath);
+    ValueTask Process(string filePath);
 }

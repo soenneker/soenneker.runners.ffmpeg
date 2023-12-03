@@ -44,7 +44,7 @@ public class ConsoleHostedService : IHostedService
 
                     string extractionPath = await _extractionUtil.Extract7Zip(fileName, "ffmpeg.exe");
 
-                    await _fileOperationsUtil.SaveToGitRepo(Path.Combine(extractionPath, "bin", "ffmpeg.exe"));
+                    await _fileOperationsUtil.Process(Path.Combine(extractionPath, "bin", "ffmpeg.exe")); ;
 
                     _logger.LogInformation("Complete!");
 
@@ -53,7 +53,7 @@ public class ConsoleHostedService : IHostedService
                 catch (Exception e)
                 {
                     if (Debugger.IsAttached)
-                        throw;
+                        Debugger.Break();
 
                     _logger.LogError(e, "Unhandled exception");
 

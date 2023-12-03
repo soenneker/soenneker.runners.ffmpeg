@@ -2,6 +2,8 @@
 using Soenneker.Git.Util.Registrars;
 using Soenneker.Runners.FFmpeg.Utils;
 using Soenneker.Runners.FFmpeg.Utils.Abstract;
+using Soenneker.Utils.Dotnet.NuGet.Registrars;
+using Soenneker.Utils.Dotnet.Registrars;
 using Soenneker.Utils.File.Registrars;
 using Soenneker.Utils.HttpClientCache.Registrar;
 
@@ -23,9 +25,11 @@ public class Startup
         services.AddHttpClientCache();
         services.AddHostedService<ConsoleHostedService>();
         services.AddFileUtilAsScoped();
-        services.AddGitUtilAsSingleton();
-        services.AddSingleton<IExtractionUtil, ExtractionUtil>();
-        services.AddSingleton<IDownloadUtil, DownloadUtil>();
-        services.AddSingleton<IFileOperationsUtil, FileOperationsUtil>();
+        services.AddGitUtilAsScoped();
+        services.AddScoped<IExtractionUtil, ExtractionUtil>();
+        services.AddScoped<IDownloadUtil, DownloadUtil>();
+        services.AddScoped<IFileOperationsUtil, FileOperationsUtil>();
+        services.AddDotnetNuGetUtilAsScoped();
+        services.AddDotnetUtilAsScoped();
     }
 }

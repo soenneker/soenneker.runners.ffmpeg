@@ -30,6 +30,6 @@ public class DownloadUtilTests : FixturedUnitTest
 
         var extractUtil = Resolve<IExtractionUtil>();
 
-        var directory = await extractUtil.Extract7Zip(@"C:\Users\Jake\AppData\Local\Temp\0cdf5547-eaee-4f5d-badb-ba5845ec1751.7z");
+        string? directory = await extractUtil.Extract7Zip(@"C:\Users\Jake\AppData\Local\Temp\0cdf5547-eaee-4f5d-badb-ba5845ec1751.7z");
     }
 }

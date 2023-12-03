@@ -30,9 +30,9 @@ public class ExtractionUtil : IExtractionUtil
 
         await using (Stream stream = File.OpenRead(fileNamePath))
         {
-            using (var archive = SevenZipArchive.Open(stream))
+            using (SevenZipArchive? archive = SevenZipArchive.Open(stream))
             {
-                foreach (var entry in archive.Entries)
+                foreach (SevenZipArchiveEntry? entry in archive.Entries)
                 {
                     try
                     {
@@ -67,7 +67,7 @@ public class ExtractionUtil : IExtractionUtil
 
         _logger.LogInformation("Finished extracting {fileName}", fileNamePath);
 
-        var path = Path.Combine(tempDir, GetFirstDirectory(tempDir));
+        string? path = Path.Combine(tempDir, GetFirstDirectory(tempDir));
         return path;
     }
 
@@ -78,7 +78,7 @@ public class ExtractionUtil : IExtractionUtil
 
     private static string GetFirstDirectory(string path)
     {
-        var directory = Directory.GetDirectories(path).First();
+        string? directory = Directory.GetDirectories(path).First();
         directory = GetLastPart(directory);
         return directory;
     }
