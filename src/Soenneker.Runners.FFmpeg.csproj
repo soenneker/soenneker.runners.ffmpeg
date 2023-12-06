@@ -50,7 +50,7 @@
 
         <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="2.1.4" />
 
-        <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.62" />
+        <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.64" />
 
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="2.1.58" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
