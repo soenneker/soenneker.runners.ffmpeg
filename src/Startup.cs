@@ -13,15 +13,15 @@ namespace Soenneker.Runners.FFmpeg;
 /// <summary>
 /// Console type startup
 /// </summary>
-public class Startup
+public static class Startup
 {
     // This method gets called by the runtime. Use this method to add services to the container.
     public static void ConfigureServices(IServiceCollection services)
     {
-        SetupIoC(services);
+        services.SetupIoC();
     }
 
-    public static void SetupIoC(IServiceCollection services)
+    public static void SetupIoC(this IServiceCollection services)
     {
         services.AddHttpClientCache();
         services.AddHostedService<ConsoleHostedService>();

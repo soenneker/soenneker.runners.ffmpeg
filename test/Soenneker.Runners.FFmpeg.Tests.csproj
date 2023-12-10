@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Facts.Local" Version="2.1.69" />
+        <PackageReference Include="Soenneker.Facts.Local" Version="2.1.71" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.5.5">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,8 +27,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Soenneker.Utils.Test" Version="2.1.34" />
-        <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="2.1.109" />
+        <PackageReference Include="Soenneker.Utils.Test" Version="2.1.35" />
+        <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="2.1.112" />
     </ItemGroup>
 
     <ItemGroup>
