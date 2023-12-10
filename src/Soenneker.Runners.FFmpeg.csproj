@@ -42,7 +42,7 @@
     
     <ItemGroup>
         <PackageReference Include="SharpCompress" Version="0.34.2" />
-        <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="2.1.82" />
+        <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="2.1.83" />
 
         <PackageReference Include="Soenneker.Git.Util" Version="2.1.100" />
 
@@ -58,8 +58,8 @@
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
         <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
-        <PackageReference Include="Soenneker.Extensions.Configuration" Version="2.1.58" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="2.1.59" />
         <PackageReference Include="Soenneker.Utils.File" Version="2.1.121" />
-        <PackageReference Include="Soenneker.Utils.SHA3" Version="2.1.62" />
+        <PackageReference Include="Soenneker.Utils.SHA3" Version="2.1.64" />
     </ItemGroup>
 </Project>

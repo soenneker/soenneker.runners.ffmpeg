@@ -7,6 +7,7 @@ using Soenneker.Utils.Dotnet.Registrars;
 using Soenneker.Utils.File.Registrars;
 using Soenneker.Utils.FileSync.Registrars;
 using Soenneker.Utils.HttpClientCache.Registrar;
+using Soenneker.Utils.SHA3.Registrars;
 
 namespace Soenneker.Runners.FFmpeg;
 
@@ -26,6 +27,7 @@ public static class Startup
         services.AddHttpClientCache();
         services.AddHostedService<ConsoleHostedService>();
         services.AddFileUtilAsScoped();
+        services.AddSha3UtilAsScoped();
         services.AddFileUtilSyncAsScoped();
         services.AddGitUtilAsScoped();
         services.AddScoped<IExtractionUtil, ExtractionUtil>();
