@@ -50,7 +50,7 @@
 
         <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="2.1.51" />
 
-        <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.78" />
+        <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.79" />
 
         <PackageReference Include="Soenneker.Utils.FileSync" Version="2.1.78" />
 
