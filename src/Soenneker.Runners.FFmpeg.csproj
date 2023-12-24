@@ -52,7 +52,7 @@
 
         <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.98" />
 
-        <PackageReference Include="Soenneker.Utils.FileSync" Version="2.1.98" />
+        <PackageReference Include="Soenneker.Utils.FileSync" Version="2.1.99" />
 
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="2.1.91" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
