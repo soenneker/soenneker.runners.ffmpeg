@@ -45,7 +45,7 @@
         <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="2.1.288" />
         <PackageReference Include="Soenneker.Git.Util" Version="2.1.678" />
         <PackageReference Include="Soenneker.Utils.Dotnet" Version="2.1.503" />
-        <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="2.1.372" />
+        <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="2.1.373" />
         <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.226" />
         <PackageReference Include="Soenneker.Utils.FileSync" Version="2.1.377" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="2.1.281" />
