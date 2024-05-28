@@ -54,6 +54,6 @@
         <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="2.1.305" />
         <PackageReference Include="Soenneker.Utils.File" Version="2.1.675" />
-        <PackageReference Include="Soenneker.Utils.SHA3" Version="2.1.530" />
+        <PackageReference Include="Soenneker.Utils.SHA3" Version="2.1.531" />
     </ItemGroup>
 </Project>
