@@ -44,7 +44,7 @@
         <PackageReference Include="SharpCompress" Version="0.37.2" />
         <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="2.1.409" />
         <PackageReference Include="Soenneker.Git.Util" Version="2.1.1127" />
-        <PackageReference Include="Soenneker.Utils.Dotnet" Version="2.1.827" />
+        <PackageReference Include="Soenneker.Utils.Dotnet" Version="2.1.834" />
         <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="2.1.665" />
         <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.266" />
         <PackageReference Include="Soenneker.Utils.FileSync" Version="2.1.631" />
