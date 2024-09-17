@@ -1,0 +1,39 @@
+name: daily-automatic-update
+on:
+  schedule:
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+
+env:
+  Username: ${{ secrets.USERNAME }}
+  Token: ${{ secrets.TOKEN }}
+  Name: ${{ secrets.NAME }}
+  Email: ${{ secrets.EMAIL }}
+  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+
+jobs:
+
+  daily-automatic-update:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setting up build version
+        run: |
+          version=$(($GITHUB_RUN_NUMBER))
+          echo "BUILD_VERSION=2.5.$version" >> ${GITHUB_ENV}
+
+      - name: Setup .NET 8.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run
+        run: dotnet run --project src/Soenneker.Runners.FFmpeg.csproj --no-restore --verbosity normal --framework net8.0
