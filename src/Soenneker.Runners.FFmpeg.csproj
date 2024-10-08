@@ -53,7 +53,7 @@
         <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="2.1.455" />
-        <PackageReference Include="Soenneker.Utils.File" Version="2.1.1148" />
+        <PackageReference Include="Soenneker.Utils.File" Version="2.1.1151" />
         <PackageReference Include="Soenneker.Utils.SHA3" Version="2.1.797" />
     </ItemGroup>
 </Project>
