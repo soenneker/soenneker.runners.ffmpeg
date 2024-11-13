@@ -47,7 +47,7 @@
         <PackageReference Include="Soenneker.Utils.Dotnet" Version="2.1.1301" />
         <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="2.1.1102" />
         <PackageReference Include="Soenneker.Utils.Environment" Version="2.1.323" />
-        <PackageReference Include="Soenneker.Utils.FileSync" Version="2.1.983" />
+        <PackageReference Include="Soenneker.Utils.FileSync" Version="2.1.987" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="2.1.970" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
         <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
