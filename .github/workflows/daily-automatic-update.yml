@@ -24,10 +24,10 @@ jobs:
           version=$(($GITHUB_RUN_NUMBER))
           echo "BUILD_VERSION=2.5.$version" >> ${GITHUB_ENV}
 
-      - name: Setup .NET 8.0
+      - name: Setup .NET 9.0
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
       - name: Install dependencies
         run: dotnet restore
@@ -36,4 +36,4 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Run
-        run: dotnet run --project src/Soenneker.Runners.FFmpeg.csproj --no-restore --verbosity normal --framework net8.0
+        run: dotnet run --project src/Soenneker.Runners.FFmpeg.csproj --no-restore --verbosity normal --framework net9.0
