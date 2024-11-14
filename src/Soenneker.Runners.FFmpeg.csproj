@@ -46,7 +46,7 @@
         <PackageReference Include="Soenneker.Git.Util" Version="2.1.1800" />
         <PackageReference Include="Soenneker.Utils.Dotnet" Version="3.0.1315" />
         <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="3.0.1117" />
-        <PackageReference Include="Soenneker.Utils.Environment" Version="3.0.326" />
+        <PackageReference Include="Soenneker.Utils.Environment" Version="3.0.328" />
         <PackageReference Include="Soenneker.Utils.FileSync" Version="3.0.1002" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="2.1.981" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
