@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Soenneker.Facts.Local;
 using Soenneker.Runners.FFmpeg.Utils.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using Xunit;
-using Xunit.Abstractions;
+
 
 namespace Soenneker.Runners.FFmpeg.Tests.Utils;
 
