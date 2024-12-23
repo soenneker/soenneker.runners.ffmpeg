@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using System.Threading.Tasks;
 using Soenneker.Fixtures.Unit;
 using Soenneker.Utils.Test;
 
@@ -9,11 +8,11 @@ namespace Soenneker.Runners.FFmpeg.Tests;
 
 public class Fixture : UnitFixture
 {
-    public override async System.Threading.Tasks.ValueTask InitializeAsync()
+    public override System.Threading.Tasks.ValueTask InitializeAsync()
     {
         SetupIoC(Services);
 
-        await base.InitializeAsync();
+        return base.InitializeAsync();
     }
 
     private static void SetupIoC(IServiceCollection services)
@@ -25,7 +24,5 @@ public class Fixture : UnitFixture
 
         IConfiguration config = TestUtil.BuildConfig();
         services.AddSingleton(config);
-
-        Startup.SetupIoC(services);
     }
 }

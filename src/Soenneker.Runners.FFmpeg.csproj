@@ -43,16 +43,16 @@
     <ItemGroup>
         <PackageReference Include="SharpCompress" Version="0.38.0" />
         <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="3.0.714" />
-        <PackageReference Include="Soenneker.Git.Util" Version="3.0.2134" />
-        <PackageReference Include="Soenneker.Utils.Dotnet" Version="3.0.1546" />
-        <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="3.0.1283" />
-        <PackageReference Include="Soenneker.Utils.Environment" Version="3.0.374" />
+        <PackageReference Include="Soenneker.Git.Util" Version="3.0.2142" />
+        <PackageReference Include="Soenneker.Utils.Dotnet" Version="3.0.1549" />
+        <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="3.0.1285" />
+        <PackageReference Include="Soenneker.Utils.Environment" Version="3.0.375" />
         <PackageReference Include="Soenneker.Utils.FileSync" Version="3.0.1180" />
-        <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="3.0.1184" />
+        <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="3.0.1186" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
         <PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0" />
         <PackageReference Include="Soenneker.Utils.File" Version="3.0.1485" />
-        <PackageReference Include="Soenneker.Utils.SHA3" Version="3.0.964" />
+        <PackageReference Include="Soenneker.Utils.SHA3" Version="3.0.965" />
     </ItemGroup>
 </Project>
