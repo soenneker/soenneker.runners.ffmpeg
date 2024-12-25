@@ -1,4 +1,5 @@
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Soenneker.Git.Util.Abstract;
@@ -40,23 +41,23 @@ public class FileOperationsUtil : IFileOperationsUtil
         _sha3Util = sha3Util;
     }
 
-    public async ValueTask Process(string filePath)
+    public async ValueTask Process(string filePath, CancellationToken cancellationToken)
     {
         string gitDirectory = _gitUtil.CloneToTempDirectory("https://github.com/soenneker/soenneker.libraries.ffmpeg");
 
         string targetExePath = Path.Combine(gitDirectory, "src", "Resources", "ffmpeg.exe");
 
-        bool needToUpdate = await CheckForHashDifferences(gitDirectory, filePath);
+        bool needToUpdate = await CheckForHashDifferences(gitDirectory, filePath, cancellationToken);
 
         if (!needToUpdate)
             return;
 
-        await BuildPackAndPush(gitDirectory, targetExePath, filePath);
+        await BuildPackAndPush(gitDirectory, targetExePath, filePath, cancellationToken);
 
-        await SaveHashToGitRepo(gitDirectory);
+        await SaveHashToGitRepo(gitDirectory, cancellationToken);
     }
 
-    private async ValueTask BuildPackAndPush(string gitDirectory, string targetExePath, string filePath)
+    private async ValueTask BuildPackAndPush(string gitDirectory, string targetExePath, string filePath, CancellationToken cancellationToken)
     {
         _fileUtilSync.DeleteIfExists(targetExePath);
 
@@ -66,9 +67,9 @@ public class FileOperationsUtil : IFileOperationsUtil
 
         string projFilePath = Path.Combine(gitDirectory, "src", "Soenneker.Libraries.FFmpeg.csproj");
 
-        await _dotnetUtil.Restore(projFilePath);
+        await _dotnetUtil.Restore(projFilePath, cancellationToken: cancellationToken);
 
-        bool successful = await _dotnetUtil.Build(projFilePath, true, "Release", false);
+        bool successful = await _dotnetUtil.Build(projFilePath, true, "Release", false, cancellationToken: cancellationToken);
 
         if (!successful)
         {
@@ -78,18 +79,18 @@ public class FileOperationsUtil : IFileOperationsUtil
 
         string version = EnvironmentUtil.GetVariableStrict("BUILD_VERSION");
 
-        await _dotnetUtil.Pack(projFilePath, version, true, "Release", false, false, gitDirectory);
+        await _dotnetUtil.Pack(projFilePath, version, true, "Release", false, false, gitDirectory, cancellationToken: cancellationToken);
 
         string apiKey = EnvironmentUtil.GetVariableStrict("NUGET_API_KEY");
 
         string nuGetPackagePath = Path.Combine(gitDirectory, $"Soenneker.Libraries.FFmpeg.{version}.nupkg");
 
-        await _dotnetNuGetUtil.Push(nuGetPackagePath, apiKey);
+        await _dotnetNuGetUtil.Push(nuGetPackagePath, apiKey: apiKey, cancellationToken: cancellationToken);
     }
 
-    private async ValueTask<bool> CheckForHashDifferences(string gitDirectory, string filePath)
+    private async ValueTask<bool> CheckForHashDifferences(string gitDirectory, string filePath, CancellationToken cancellationToken)
     {
-        string? oldHash = await _fileUtil.TryReadFile(Path.Combine(gitDirectory, "hash.txt"));
+        string? oldHash = await _fileUtil.TryReadFile(Path.Combine(gitDirectory, "hash.txt"), cancellationToken: cancellationToken);
 
         if (oldHash == null)
         {
@@ -97,7 +98,7 @@ public class FileOperationsUtil : IFileOperationsUtil
             return true;
         }
 
-        _newHash = await _sha3Util.HashFile(filePath);
+        _newHash = await _sha3Util.HashFile(filePath, cancellationToken: cancellationToken);
 
         if (oldHash == _newHash)
         {
@@ -108,13 +109,13 @@ public class FileOperationsUtil : IFileOperationsUtil
         return true;
     }
 
-    private async ValueTask SaveHashToGitRepo(string gitDirectory)
+    private async ValueTask SaveHashToGitRepo(string gitDirectory, CancellationToken cancellationToken)
     {
         string targetHashFile = Path.Combine(gitDirectory, "hash.txt");
 
         _fileUtilSync.DeleteIfExists(targetHashFile);
 
-        await _fileUtil.WriteFile(targetHashFile, _newHash!);
+        await _fileUtil.WriteFile(targetHashFile, _newHash!, cancellationToken);
 
         _fileUtilSync.DeleteIfExists(Path.Combine(gitDirectory, "src", "Resources", "ffmpeg.exe"));
 

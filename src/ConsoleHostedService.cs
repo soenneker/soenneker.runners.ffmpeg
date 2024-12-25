@@ -40,11 +40,11 @@ public class ConsoleHostedService : IHostedService
 
                 try
                 {
-                    string fileName = await _downloadUtil.Download();
+                    string fileName = await _downloadUtil.Download(cancellationToken);
 
                     string extractionPath = await _extractionUtil.Extract7Zip(fileName, "ffmpeg.exe");
 
-                    await _fileOperationsUtil.Process(Path.Combine(extractionPath, "bin", "ffmpeg.exe")); ;
+                    await _fileOperationsUtil.Process(Path.Combine(extractionPath, "bin", "ffmpeg.exe"), cancellationToken);
 
                     _logger.LogInformation("Complete!");
 
@@ -57,7 +57,7 @@ public class ConsoleHostedService : IHostedService
 
                     _logger.LogError(e, "Unhandled exception");
 
-                    await Task.Delay(2000);
+                    await Task.Delay(2000, cancellationToken);
                     _exitCode = 1;
                 }
                 finally
