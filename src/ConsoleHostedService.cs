@@ -5,7 +5,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Soenneker.Compression.SevenZip.Abstract;
 using Soenneker.Runners.FFmpeg.Utils.Abstract;
+using Soenneker.Utils.File.Download.Abstract;
 
 namespace Soenneker.Runners.FFmpeg;
 
@@ -15,22 +17,22 @@ public class ConsoleHostedService : IHostedService
 
     private readonly IHostApplicationLifetime _appLifetime;
     private readonly IFileOperationsUtil _fileOperationsUtil;
-    private readonly IDownloadUtil _downloadUtil;
-    private readonly IExtractionUtil _extractionUtil;
+    private readonly ISevenZipCompressionUtil _sevenZipCompressionUtil;
+    private readonly IFileDownloadUtil _fileDownloadUtil;
 
     private int? _exitCode;
 
     public ConsoleHostedService(ILogger<ConsoleHostedService> logger, IHostApplicationLifetime appLifetime, 
-        IFileOperationsUtil fileOperationsUtil,IDownloadUtil downloadUtil, IExtractionUtil extractionUtil)
+        IFileOperationsUtil fileOperationsUtil, ISevenZipCompressionUtil sevenZipCompressionUtil, IFileDownloadUtil fileDownloadUtil)
     {
         _logger = logger;
         _appLifetime = appLifetime;
         _fileOperationsUtil = fileOperationsUtil;
-        _downloadUtil = downloadUtil;
-        _extractionUtil = extractionUtil;
+        _sevenZipCompressionUtil = sevenZipCompressionUtil;
+        _fileDownloadUtil = fileDownloadUtil;
     }
 
-    public Task StartAsync(CancellationToken cancellationToken)
+    public Task StartAsync(CancellationToken cancellationToken = default)
     {
         _appLifetime.ApplicationStarted.Register(() =>
         {
@@ -40,11 +42,11 @@ public class ConsoleHostedService : IHostedService
 
                 try
                 {
-                    string fileName = await _downloadUtil.Download(cancellationToken);
+                    string? filePath = await _fileDownloadUtil.Download("https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z", fileExtension: ".7z", cancellationToken: cancellationToken);
 
-                    string extractionPath = await _extractionUtil.Extract7Zip(fileName, "ffmpeg.exe");
+                    string extractionPath = await _sevenZipCompressionUtil.Extract(filePath!, Constants.FileName, cancellationToken);
 
-                    await _fileOperationsUtil.Process(Path.Combine(extractionPath, "bin", "ffmpeg.exe"), cancellationToken);
+                    await _fileOperationsUtil.Process(Path.Combine(extractionPath, "bin", Constants.FileName), cancellationToken);
 
                     _logger.LogInformation("Complete!");
 

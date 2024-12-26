@@ -42,16 +42,17 @@
     
     <ItemGroup>
         <PackageReference Include="SharpCompress" Version="0.38.0" />
+        <PackageReference Include="Soenneker.Compression.SevenZip" Version="3.0.2" />
         <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="3.0.727" />
         <PackageReference Include="Soenneker.Git.Util" Version="3.0.2167" />
         <PackageReference Include="Soenneker.Utils.Dotnet.NuGet" Version="3.0.1300" />
         <PackageReference Include="Soenneker.Utils.Environment" Version="3.0.380" />
+        <PackageReference Include="Soenneker.Utils.File.Download" Version="3.0.406" />
         <PackageReference Include="Soenneker.Utils.FileSync" Version="3.0.1199" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="3.0.1204" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
         <PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0" />
-        <PackageReference Include="Soenneker.Utils.File" Version="3.0.1508" />
         <PackageReference Include="Soenneker.Utils.SHA3" Version="3.0.977" />
     </ItemGroup>
 </Project>
