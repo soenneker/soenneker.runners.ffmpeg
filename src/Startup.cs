@@ -4,7 +4,6 @@ using Soenneker.Git.Util.Registrars;
 using Soenneker.Runners.FFmpeg.Utils;
 using Soenneker.Runners.FFmpeg.Utils.Abstract;
 using Soenneker.Utils.Dotnet.NuGet.Registrars;
-using Soenneker.Utils.Dotnet.Registrars;
 using Soenneker.Utils.File.Download.Registrars;
 using Soenneker.Utils.FileSync.Registrars;
 using Soenneker.Utils.SHA3.Registrars;
