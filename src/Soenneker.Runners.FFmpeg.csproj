@@ -48,6 +48,6 @@
         <PackageReference Include="Soenneker.Utils.File.Download" Version="3.0.421" />
         <PackageReference Include="Soenneker.Utils.FileSync" Version="3.0.1207" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
-        <PackageReference Include="Soenneker.Utils.SHA3" Version="3.0.981" />
+        <PackageReference Include="Soenneker.Utils.SHA3" Version="3.0.983" />
     </ItemGroup>
 </Project>
