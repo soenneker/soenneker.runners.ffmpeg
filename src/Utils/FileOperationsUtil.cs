@@ -89,7 +89,7 @@ public class FileOperationsUtil : IFileOperationsUtil
 
     private async ValueTask<bool> CheckForHashDifferences(string gitDirectory, string filePath, CancellationToken cancellationToken)
     {
-        string? oldHash = await _fileUtil.TryReadFile(Path.Combine(gitDirectory, "hash.txt"), true, cancellationToken);
+        string? oldHash = await _fileUtil.TryRead(Path.Combine(gitDirectory, "hash.txt"), true, cancellationToken);
 
         if (oldHash == null)
         {
@@ -114,7 +114,7 @@ public class FileOperationsUtil : IFileOperationsUtil
 
         _fileUtilSync.DeleteIfExists(targetHashFile);
 
-        await _fileUtil.WriteFile(targetHashFile, _newHash!, cancellationToken);
+        await _fileUtil.Write(targetHashFile, _newHash!, cancellationToken);
 
         _fileUtilSync.DeleteIfExists(Path.Combine(gitDirectory, "src", "Resources", Constants.FileName));
 
