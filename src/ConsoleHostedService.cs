@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Soenneker.Compression.SevenZip.Abstract;
-using Soenneker.Runners.FFmpeg.Utils.Abstract;
+using Soenneker.Managers.Runners.Abstract;
 using Soenneker.Utils.File.Download.Abstract;
 
 namespace Soenneker.Runners.FFmpeg;
@@ -16,18 +16,18 @@ public class ConsoleHostedService : IHostedService
     private readonly ILogger<ConsoleHostedService> _logger;
 
     private readonly IHostApplicationLifetime _appLifetime;
-    private readonly IFileOperationsUtil _fileOperationsUtil;
+    private readonly IRunnersManager _runnersManager;
     private readonly ISevenZipCompressionUtil _sevenZipCompressionUtil;
     private readonly IFileDownloadUtil _fileDownloadUtil;
 
     private int? _exitCode;
 
-    public ConsoleHostedService(ILogger<ConsoleHostedService> logger, IHostApplicationLifetime appLifetime, 
-        IFileOperationsUtil fileOperationsUtil, ISevenZipCompressionUtil sevenZipCompressionUtil, IFileDownloadUtil fileDownloadUtil)
+    public ConsoleHostedService(ILogger<ConsoleHostedService> logger, IHostApplicationLifetime appLifetime,
+        IRunnersManager runnersManager, ISevenZipCompressionUtil sevenZipCompressionUtil, IFileDownloadUtil fileDownloadUtil)
     {
         _logger = logger;
         _appLifetime = appLifetime;
-        _fileOperationsUtil = fileOperationsUtil;
+        _runnersManager = runnersManager;
         _sevenZipCompressionUtil = sevenZipCompressionUtil;
         _fileDownloadUtil = fileDownloadUtil;
     }
@@ -46,7 +46,7 @@ public class ConsoleHostedService : IHostedService
 
                     string extractionPath = await _sevenZipCompressionUtil.Extract(filePath!, Constants.FileName, true, cancellationToken);
 
-                    await _fileOperationsUtil.Process(Path.Combine(extractionPath, "bin", Constants.FileName), cancellationToken);
+                    await _runnersManager.PushIfChangesNeeded(Path.Combine(extractionPath, "bin", Constants.FileName), Constants.FileName, Constants.Library, $"https://github.com/soenneker/{Constants.Library}", cancellationToken);
 
                     _logger.LogInformation("Complete!");
 

@@ -1,12 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Soenneker.Compression.SevenZip.Registrars;
-using Soenneker.Git.Util.Registrars;
-using Soenneker.Runners.FFmpeg.Utils;
-using Soenneker.Runners.FFmpeg.Utils.Abstract;
-using Soenneker.Utils.Dotnet.NuGet.Registrars;
+using Soenneker.Managers.Runners.Registrars;
 using Soenneker.Utils.File.Download.Registrars;
-using Soenneker.Utils.FileSync.Registrars;
-using Soenneker.Utils.SHA3.Registrars;
 
 namespace Soenneker.Runners.FFmpeg;
 
@@ -24,12 +19,8 @@ public static class Startup
     public static IServiceCollection SetupIoC(this IServiceCollection services)
     {
         services.AddHostedService<ConsoleHostedService>();
-        services.AddSha3UtilAsScoped();
-        services.AddFileUtilSyncAsScoped();
-        services.AddGitUtilAsScoped();
         services.AddSevenZipCompressionUtilAsScoped();
-        services.AddScoped<IFileOperationsUtil, FileOperationsUtil>();
-        services.AddDotnetNuGetUtilAsScoped();
+        services.AddRunnersManagerAsScoped();
         services.AddFileDownloadUtilAsScoped();
 
         return services;
