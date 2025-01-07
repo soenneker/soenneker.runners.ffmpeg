@@ -6,7 +6,7 @@ on:
 
 env:
   USERNAME: ${{ secrets.USERNAME }}
-  TOKEN: ${{ secrets.TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
   NAME: ${{ secrets.NAME }}
   EMAIL: ${{ secrets.EMAIL }}
   NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
