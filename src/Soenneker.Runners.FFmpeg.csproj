@@ -40,7 +40,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Compression.SevenZip" Version="3.0.372" />
+        <PackageReference Include="Soenneker.Compression.SevenZip" Version="3.0.373" />
         <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="3.0.922" />
         <PackageReference Include="Soenneker.Utils.File.Download" Version="3.0.1073" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
