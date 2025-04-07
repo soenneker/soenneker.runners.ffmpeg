@@ -44,6 +44,6 @@
         <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="3.0.942" />
         <PackageReference Include="Soenneker.Utils.File.Download" Version="3.0.1107" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.3" />
-        <PackageReference Include="Soenneker.Managers.Runners" Version="3.0.865" />
+        <PackageReference Include="Soenneker.Managers.Runners" Version="3.0.868" />
     </ItemGroup>
 </Project>
