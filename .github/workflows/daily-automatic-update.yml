@@ -10,7 +10,8 @@ env:
   NAME: ${{ secrets.NAME }}
   EMAIL: ${{ secrets.EMAIL }}
   NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
-
+  GIT__TOKEN: ${{ secrets.GIT__TOKEN }}
+  
 jobs:
 
   daily-automatic-update:
