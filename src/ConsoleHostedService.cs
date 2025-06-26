@@ -44,7 +44,7 @@ public class ConsoleHostedService : IHostedService
                 {
                     string? filePath = await _fileDownloadUtil.Download("https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z", fileExtension: ".7z", cancellationToken: cancellationToken);
 
-                    string extractionPath = await _sevenZipCompressionUtil.Extract(filePath!, Constants.FileName, true, cancellationToken);
+                    string extractionPath = await _sevenZipCompressionUtil.Extract(filePath!, cancellationToken);
 
                     await _runnersManager.PushIfChangesNeeded(Path.Combine(extractionPath, "bin", Constants.FileName), Constants.FileName, Constants.Library, $"https://github.com/soenneker/{Constants.Library}", cancellationToken);
 
