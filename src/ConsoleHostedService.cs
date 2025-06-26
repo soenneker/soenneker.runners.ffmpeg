@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Soenneker.Compression.SevenZip.Abstract;
 using Soenneker.Managers.Runners.Abstract;
+using Soenneker.Utils.Directory.Abstract;
 using Soenneker.Utils.File.Download.Abstract;
 
 namespace Soenneker.Runners.FFmpeg;
@@ -19,17 +20,19 @@ public sealed class ConsoleHostedService : IHostedService
     private readonly IRunnersManager _runnersManager;
     private readonly ISevenZipCompressionUtil _sevenZipCompressionUtil;
     private readonly IFileDownloadUtil _fileDownloadUtil;
+    private readonly IDirectoryUtil _directoryUtil;
 
     private int? _exitCode;
 
-    public ConsoleHostedService(ILogger<ConsoleHostedService> logger, IHostApplicationLifetime appLifetime,
-        IRunnersManager runnersManager, ISevenZipCompressionUtil sevenZipCompressionUtil, IFileDownloadUtil fileDownloadUtil)
+    public ConsoleHostedService(ILogger<ConsoleHostedService> logger, IHostApplicationLifetime appLifetime, IRunnersManager runnersManager,
+        ISevenZipCompressionUtil sevenZipCompressionUtil, IFileDownloadUtil fileDownloadUtil, IDirectoryUtil directoryUtil)
     {
         _logger = logger;
         _appLifetime = appLifetime;
         _runnersManager = runnersManager;
         _sevenZipCompressionUtil = sevenZipCompressionUtil;
         _fileDownloadUtil = fileDownloadUtil;
+        _directoryUtil = directoryUtil;
     }
 
     public Task StartAsync(CancellationToken cancellationToken = default)
@@ -42,11 +45,15 @@ public sealed class ConsoleHostedService : IHostedService
 
                 try
                 {
-                    string? filePath = await _fileDownloadUtil.Download("https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z", fileExtension: ".7z", cancellationToken: cancellationToken);
+                    string? filePath = await _fileDownloadUtil.Download("https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z", fileExtension: ".7z",
+                        cancellationToken: cancellationToken);
 
                     string extractionPath = await _sevenZipCompressionUtil.Extract(filePath!, cancellationToken);
 
-                    await _runnersManager.PushIfChangesNeeded(Path.Combine(extractionPath, "bin", Constants.FileName), Constants.FileName, Constants.Library, $"https://github.com/soenneker/{Constants.Library}", cancellationToken);
+                    _directoryUtil.MoveContentsUpOneLevelStrict(extractionPath);
+
+                    await _runnersManager.PushIfChangesNeeded(Path.Combine(extractionPath, "bin", Constants.FileName), Constants.FileName, Constants.Library,
+                        $"https://github.com/soenneker/{Constants.Library}", cancellationToken);
 
                     _logger.LogInformation("Complete!");
 
