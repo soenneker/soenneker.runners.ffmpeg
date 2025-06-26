@@ -11,7 +11,7 @@ using Soenneker.Utils.File.Download.Abstract;
 
 namespace Soenneker.Runners.FFmpeg;
 
-public class ConsoleHostedService : IHostedService
+public sealed class ConsoleHostedService : IHostedService
 {
     private readonly ILogger<ConsoleHostedService> _logger;
 
