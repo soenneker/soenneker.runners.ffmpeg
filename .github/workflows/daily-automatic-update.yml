@@ -9,7 +9,7 @@ env:
   GH__TOKEN: ${{ secrets.GH__TOKEN }}
   NAME: ${{ secrets.NAME }}
   EMAIL: ${{ secrets.EMAIL }}
-  NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
+  NUGET__TOKEN: ${{ secrets.NUGET__TOKEN }}
   GIT__TOKEN: ${{ secrets.GIT__TOKEN }}
   
 jobs:
