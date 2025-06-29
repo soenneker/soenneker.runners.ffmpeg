@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  GH_USERNAME: ${{ secrets.GH_USERNAME }}
+  GH__USERNAME: ${{ secrets.GH__USERNAME }}
   GH__TOKEN: ${{ secrets.GH__TOKEN }}
   GIT__NAME: ${{ secrets.GIT__NAME }}
   GIT__EMAIL: ${{ secrets.GIT__EMAIL }}
