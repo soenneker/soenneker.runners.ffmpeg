@@ -55,4 +55,4 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Run
-        run: dotnet run --project src/Soenneker.Runners.FFmpeg.csproj --no-restore --verbosity normal --framework net9.0
+        run: dotnet run --project src/Soenneker.Runners.FFmpeg.csproj --no-restore --verbosity normal --framework net9.0 -c Release
