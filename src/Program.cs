@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
@@ -51,7 +51,7 @@ public sealed class Program
     {
         DeployEnvironment envEnum = DeployEnvironment.FromName(_environment);
 
-        LoggerConfigurationExtension.BuildBootstrapLoggerAndSetGlobally(envEnum);
+        LoggerConfigurationExtension.BuildBootstrapLoggerAndSetGloballySync(envEnum);
 
         IHostBuilder host = Host.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, builder) =>
