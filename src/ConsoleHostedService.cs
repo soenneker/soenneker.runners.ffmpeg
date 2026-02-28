@@ -50,10 +50,10 @@ public sealed class ConsoleHostedService : IHostedService
 
                     string extractionPath = await _sevenZipCompressionUtil.Extract(filePath!, cancellationToken);
 
-                    await _directoryUtil.MoveContentsUpOneLevelStrict(extractionPath);
+                    await _directoryUtil.MoveContentsUpOneLevelStrict(extractionPath, cancellationToken);
 
                     await _runnersManager.PushIfChangesNeeded(Path.Combine(extractionPath, "bin", Constants.FileName), Constants.FileName, Constants.Library,
-                        $"https://github.com/soenneker/{Constants.Library}", cancellationToken);
+                        $"https://github.com/soenneker/{Constants.Library}", false, cancellationToken);
 
                     _logger.LogInformation("Complete!");
 
