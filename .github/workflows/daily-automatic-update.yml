@@ -45,29 +45,11 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
-      - name: Install dependencies with retry
-        run: |
-          retries=5
-          base_wait_time=15
-          exponent=2
-
-          for i in $(seq 1 $retries); do
-            if dotnet restore; then
-              break
-            fi
-
-            if [ $i -lt $retries ]; then
-              wait_time=$(awk "BEGIN {print int($base_wait_time * ($exponent ^ ($i - 1)))}")
-              echo "dotnet restore failed, retrying in $wait_time seconds..."
-              sleep $wait_time
-            else
-              echo "dotnet restore failed after $retries retries."
-              exit 1
-            fi
-          done
+      - name: Restore
+        run: dotnet restore src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj --configuration Release --no-restore
 
       - name: Run
-        run: dotnet run --project src/Soenneker.Runners.FFmpeg.csproj --no-restore --verbosity normal --framework net10.0 -c Release
+        run: dotnet run --project src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj --configuration Release --no-restore --no-build --verbosity normal
