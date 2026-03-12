@@ -5,7 +5,7 @@
   <Folder Name="/.github/workflows/">
     <File Path=".github/workflows/build-and-test.yml" />
     <File Path=".github/workflows/codeql.yml" />
-    <File Path=".github/workflows/publish-package.yml" />
+    <File Path=".github/workflows/daily-automatic-update.yml" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj" />

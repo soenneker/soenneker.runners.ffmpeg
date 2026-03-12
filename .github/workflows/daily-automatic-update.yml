@@ -1,8 +1,19 @@
-﻿name: daily-automatic-update
+name: daily-automatic-update
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   schedule:
     - cron: "0 17 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   GH__USERNAME: ${{ secrets.GH__USERNAME }}
@@ -11,7 +22,9 @@ env:
   GIT__EMAIL: ${{ secrets.GIT__EMAIL }}
   NUGET__TOKEN: ${{ secrets.NUGET__TOKEN }}
   GIT__TOKEN: ${{ secrets.GIT__TOKEN }}
-  
+  PipelineEnvironment: true
+  NUGET_XMLDOC_MODE: skip
+
 jobs:
 
   daily-automatic-update:
@@ -19,6 +32,8 @@ jobs:
   
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Setting up build version
         run: |
