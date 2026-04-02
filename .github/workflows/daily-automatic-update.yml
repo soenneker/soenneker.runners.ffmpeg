@@ -11,9 +11,6 @@ on:
   schedule:
     - cron: "0 17 * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 env:
   GH__USERNAME: ${{ secrets.GH__USERNAME }}
