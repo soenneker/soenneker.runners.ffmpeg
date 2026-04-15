@@ -18,7 +18,10 @@ public static class Startup
 
     public static IServiceCollection SetupIoC(this IServiceCollection services)
     {
-        services.AddHostedService<ConsoleHostedService>().AddSevenZipCompressionUtilAsScoped().AddRunnersManagerAsScoped().AddFileDownloadUtilAsScoped();
+        services.AddHostedService<ConsoleHostedService>()
+                .AddSevenZipCompressionUtilAsScoped()
+                .AddRunnersManagerAsScoped()
+                .AddFileDownloadUtilAsScoped();
 
         return services;
     }
