@@ -1,16 +1,15 @@
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Runners.FFmpeg.Tests;
 
-[Collection("Collection")]
-public class ConsoleHostedServiceTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class ConsoleHostedServiceTests : HostedUnitTest
 {
-    public ConsoleHostedServiceTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public ConsoleHostedServiceTests(Host host) : base(host)
     {
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
