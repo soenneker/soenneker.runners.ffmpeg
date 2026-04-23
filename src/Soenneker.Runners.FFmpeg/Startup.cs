@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Soenneker.Compression.SevenZip.Registrars;
 using Soenneker.Managers.Runners.Registrars;
 using Soenneker.Utils.File.Download.Registrars;
@@ -19,9 +19,9 @@ public static class Startup
     public static IServiceCollection SetupIoC(this IServiceCollection services)
     {
         services.AddHostedService<ConsoleHostedService>()
-                .AddSevenZipCompressionUtilAsScoped()
-                .AddRunnersManagerAsScoped()
-                .AddFileDownloadUtilAsScoped();
+                .AddSevenZipCompressionUtilAsSingleton()
+                .AddRunnersManagerAsSingleton()
+                .AddFileDownloadUtilAsSingleton();
 
         return services;
     }
