@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Soenneker.Enums.DeployEnvironment;
 using Soenneker.Extensions.LoggerConfiguration;
-using Soenneker.Extensions.String;
 
 namespace Soenneker.Runners.FFmpeg;
 
@@ -28,7 +27,7 @@ public sealed class Program
     {
         _environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-        if (_environment.IsNullOrWhiteSpace())
+        if (string.IsNullOrWhiteSpace(_environment))
             throw new Exception("ASPNETCORE_ENVIRONMENT is not set");
 
         // Declare CancellationTokenSource in a broader scope
@@ -60,7 +59,12 @@ public sealed class Program
     /// <returns>A host builder configured with the application services and settings.</returns>
     public static IHostBuilder CreateHostBuilder(string[] args)
     {
-        DeployEnvironment envEnum = DeployEnvironment.FromName(_environment);
+        string? environment = _environment ?? Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+        if (string.IsNullOrWhiteSpace(environment))
+            throw new InvalidOperationException("ASPNETCORE_ENVIRONMENT is not set");
+
+        DeployEnvironment envEnum = DeployEnvironment.FromName(environment);
 
         LoggerConfigurationExtension.BuildBootstrapLoggerAndSetGloballySync(envEnum);
 

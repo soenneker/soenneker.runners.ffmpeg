@@ -4,22 +4,4 @@
 
 # Soenneker.Runners.FFmpeg
 
-Represents the constants.
-
-> This is an automation runner, not a package intended for application consumption.
-
-## What you get
-
-- `Constants` — Represents the constants.
-- `ConsoleHostedService` — Represents the console hosted service.
-
-## API at a glance
-
-| API | What it does | Result / important behavior |
-| --- | --- | --- |
-| `ConsoleHostedService.StartAsync(cancellationToken)` | Starts the Console Hosted Service and begins its background work. | A task that completes after the Console Hosted Service has started. |
-| `ConsoleHostedService.StopAsync(cancellationToken)` | Stops the Console Hosted Service and waits for its background work to finish. | A task that completes after the Console Hosted Service has stopped. |
-
-## Practical notes
-
-- Cancellation stops pending work; it does not undo work that has already completed.
+Automation runner that updates the Windows FFmpeg executable published by `Soenneker.Libraries.FFmpeg`.

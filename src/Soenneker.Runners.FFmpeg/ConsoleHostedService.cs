@@ -56,7 +56,10 @@ public sealed class ConsoleHostedService : IHostedService
                     string? filePath = await _fileDownloadUtil.Download("https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z", fileExtension: ".7z",
                         cancellationToken: cancellationToken);
 
-                    string extractionPath = await _sevenZipCompressionUtil.Extract(filePath!, cancellationToken);
+                    if (filePath is null)
+                        throw new InvalidOperationException("The FFmpeg archive could not be downloaded.");
+
+                    string extractionPath = await _sevenZipCompressionUtil.Extract(filePath, cancellationToken);
 
                     await _directoryUtil.MoveContentsUpOneLevelStrict(extractionPath, cancellationToken);
 
