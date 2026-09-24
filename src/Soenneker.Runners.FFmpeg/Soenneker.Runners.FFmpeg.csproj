@@ -45,4 +45,7 @@
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
         <PackageReference Include="Soenneker.Managers.Runners" Version="4.0.2544" />
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Soenneker.Enums.DeployEnvironment" Version="4.0.242" />
+    </ItemGroup>
 </Project>
