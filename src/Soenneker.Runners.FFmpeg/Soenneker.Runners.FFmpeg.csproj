@@ -40,8 +40,8 @@
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Compression.SevenZip" Version="4.0.982" />
-        <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="4.0.1399" />
-        <PackageReference Include="Soenneker.Utils.File.Download" Version="4.0.1775" />
+        <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="4.0.1400" />
+        <PackageReference Include="Soenneker.Utils.File.Download" Version="4.0.1776" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
         <PackageReference Include="Soenneker.Managers.Runners" Version="4.0.2550" />
     </ItemGroup>
