@@ -49,7 +49,7 @@ jobs:
         run: dotnet build src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj --configuration Release --no-restore
 
       - name: Log in to NuGet
-        uses: soenneker/nuget-resilient-login@v3
+        uses: soenneker/nuget-resilient-login@v4
         id: nuget-login
         with:
           user: soenneker
