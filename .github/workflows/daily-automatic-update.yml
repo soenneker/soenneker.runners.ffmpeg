@@ -1,7 +1,6 @@
 name: daily-automatic-update
 
 permissions:
-  id-token: write
   contents: read
 
 concurrency:
@@ -48,13 +47,7 @@ jobs:
       - name: Build
         run: dotnet build src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj --configuration Release --no-restore
 
-      - name: Log in to NuGet
-        uses: soenneker/nuget-resilient-login@v7
-        id: nuget-login
-        with:
-          user: soenneker
-
       - name: Run
         env:
-          NUGET__TOKEN: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+          NUGET__TOKEN: ${{ secrets.NUGET__TOKEN }}
         run: dotnet run --project src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj --configuration Release --no-restore --no-build --verbosity normal
