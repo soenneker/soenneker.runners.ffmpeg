@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFramework>net11.0</TargetFramework>
         <IsAotCompatible>true</IsAotCompatible>
         <Nullable>enable</Nullable>
         <Platforms>AnyCPU</Platforms>
@@ -10,7 +10,7 @@
 
     <PropertyGroup>
         <Description>Automatically updates the Soenneker.Libraries.FFmpeg package</Description>
-        <Version Condition="'$(BUILD_VERSION)' == ''">2.5.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' == ''">11.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Runners.FFmpeg</AssemblyName>
         <PackageId>Soenneker.Runners.FFmpeg</PackageId>
@@ -42,8 +42,8 @@
     <ItemGroup>
         <PackageReference Include="Soenneker.Compression.SevenZip" Version="4.0.1033" />
         <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="4.0.1442" />
-        <PackageReference Include="Soenneker.Utils.File.Download" Version="4.0.1820" />
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.14" />
+        <PackageReference Include="Soenneker.Utils.File.Download" Version="4.0.1821" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="11.0.0-rc.3.26522.148" />
         <PackageReference Include="Soenneker.Managers.Runners" Version="4.0.2646" />
     </ItemGroup>
     <ItemGroup>

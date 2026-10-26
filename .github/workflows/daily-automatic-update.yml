@@ -34,12 +34,12 @@ jobs:
       - name: Setting up build version
         run: |
           version=$(($GITHUB_RUN_NUMBER))
-          echo "BUILD_VERSION=4.0.$version" >> ${GITHUB_ENV}
+          echo "BUILD_VERSION=11.0.$version" >> ${GITHUB_ENV}
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v6
         with:
-          dotnet-version: 10.0.402
+          dotnet-version: 11.0.100-rc.3.26522.148
 
       - name: Restore
         run: dotnet restore src/Soenneker.Runners.FFmpeg/Soenneker.Runners.FFmpeg.csproj
