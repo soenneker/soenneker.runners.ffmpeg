@@ -47,6 +47,5 @@
         <PackageReference Include="Soenneker.Managers.Runners" Version="11.0.2675" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Soenneker.Enums.DeployEnvironment" Version="11.0.262" />
     </ItemGroup>
 </Project>
