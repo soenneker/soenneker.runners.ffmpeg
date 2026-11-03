@@ -41,10 +41,10 @@
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Compression.SevenZip" Version="11.0.1050" />
-        <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="11.0.1452" />
-        <PackageReference Include="Soenneker.Utils.File.Download" Version="11.0.1838" />
+        <PackageReference Include="Soenneker.Extensions.LoggerConfiguration" Version="11.0.1453" />
+        <PackageReference Include="Soenneker.Utils.File.Download" Version="11.0.1840" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="11.0.0-rc.3.26522.148" />
-        <PackageReference Include="Soenneker.Managers.Runners" Version="11.0.2681" />
+        <PackageReference Include="Soenneker.Managers.Runners" Version="11.0.2684" />
     </ItemGroup>
     <ItemGroup>
     </ItemGroup>
