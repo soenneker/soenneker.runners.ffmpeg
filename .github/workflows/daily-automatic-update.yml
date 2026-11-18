@@ -13,6 +13,10 @@ on:
   workflow_dispatch:
 
 env:
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+  DOTNET_CLI_WORKLOAD_UPDATE_NOTIFY_DISABLE: 'true'
+  DOTNET_GENERATE_ASPNET_CERTIFICATE: 'false'
   GH__USERNAME: ${{ secrets.GH__USERNAME }}
   GH__TOKEN: ${{ secrets.GH__TOKEN }}
   GIT__NAME: ${{ secrets.GIT__NAME }}
